@@ -13,6 +13,7 @@ const Login = (props) => {
 
   const login = () => {
     if (username === correctUsername && password === correctPassword) {
+      localStorage.setItem(`user ${correctUsername}`, Date.now())
       props.history.push('/calculator')
     } else {
       setErrors(['Invalid login credentials'])
@@ -41,7 +42,7 @@ const Login = (props) => {
           />
         </Form.Field>
         <Button
-          onClick={() => login()}
+          onSubmit={() => login()}
         >
           Login
       </Button>
