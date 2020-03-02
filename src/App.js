@@ -1,10 +1,26 @@
-import React from 'react'
-import { Button } from 'semantic-ui-react'
+import React, { Component, createRef } from 'react'
+import Navbar from './Navbar'
+import { Sticky } from 'semantic-ui-react'
+import { Switch, Route } from 'react-router-dom'
 
-function App() {
-  return (
-    <Button>yay</Button>
-  )
+class App extends Component {
+
+  contextRef = createRef()
+
+  render() {
+
+    return (
+      <div ref={this.contextRef}>
+        <Sticky context={this.contextRef}>
+          <Navbar />
+        </Sticky>
+        {/* <Switch>
+          <Route exact path='/' component={Search}></Route>
+          <Route exact path='/search-results' component={SearchResults}></Route>
+        </Switch> */}
+      </div>
+    )
+  }
 }
 
 export default App
