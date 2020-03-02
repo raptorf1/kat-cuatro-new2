@@ -6,18 +6,22 @@ import { connect } from 'react-redux'
 const Navbar = (props) => {
 
   return (
-    <List horizontal>
+    <List
+      horizontal
+      style={{ 'paddingLeft': '2rem' }}
+    >
       <List.Item
         as={Link}
         to='/'
         onClick={() => props.dispatch({ type: 'CHANGE_AUTH' })}
-        style={{'display': props.userIn === false && 'none'}}
+        style={{ 'display': props.userIn === false && 'none', 'fontWeight': 'bolder', 'fontSize': 'small', 'color': 'red' }}
       >
         Logout
       </List.Item>
       <List.Item
         as={Link}
         to={props.userIn === true ? '/calculator' : '/'}
+        style={{ 'fontWeight': 'bolder', 'fontSize': 'x-large' }}
       >
         Calculator
       </List.Item>

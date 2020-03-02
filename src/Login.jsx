@@ -24,7 +24,9 @@ const Login = (props) => {
 
   return (
     <>
-      <Form>
+      <Form
+        style={{ 'maxWidth': 'fit-content', 'textAlignLast': 'center', 'paddingTop': '1rem', 'paddingLeft': '5rem' }}
+      >
         <Form.Field>
           <input
             placeholder='Username'
