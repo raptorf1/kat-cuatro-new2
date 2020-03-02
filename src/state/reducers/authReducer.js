@@ -6,7 +6,7 @@ const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'CHANGE_AUTH':
       return {
-        userLoggedIn: true
+        userLoggedIn: !state.userLoggedIn
       }
     default:
       return state
