@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import { Form, Button, Message } from 'semantic-ui-react'
 
 const Login = (props) => {
@@ -13,7 +14,7 @@ const Login = (props) => {
 
   const login = () => {
     if (username === correctUsername && password === correctPassword) {
-      localStorage.setItem('user', `${correctUsername}`)
+      props.dispatch({ type: 'CHANGE_AUTH' })
       props.history.push('/calculator')
     } else {
       setErrors(['Invalid login credentials'])
@@ -56,4 +57,8 @@ const Login = (props) => {
   )
 }
 
-export default Login
+const mapStateToProps = (state) => {
+  return { userIn: state.auth.userLoggedIn }
+}
+
+export default connect(mapStateToProps)(Login)
