@@ -1,11 +1,11 @@
 import React from 'react'
 import { List } from 'semantic-ui-react'
 
-const Login = () => {
+const Calculator = () => {
 
   return (
-    'login yay'
+    'calculator yay'
   )
 }
 
-export default Login
+export default Calculator

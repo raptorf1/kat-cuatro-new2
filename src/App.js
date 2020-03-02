@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react'
 import Navbar from './Navbar'
 import Login from './Login'
+import Calculator from './Calculator'
 import { Sticky } from 'semantic-ui-react'
 import { Switch, Route } from 'react-router-dom'
 
@@ -17,7 +18,7 @@ class App extends Component {
         </Sticky>
         <Switch>
           <Route exact path='/' component={Login}></Route>
-          {/* <Route exact path='/search-results' component={SearchResults}></Route> */}
+          <Route exact path='/calculator' component={Calculator}></Route>
         </Switch>
       </div>
     )
