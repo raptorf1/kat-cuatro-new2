@@ -38,7 +38,6 @@ const Calculator = (props) => {
           defaultValue={height}
           value={height}
           onChange={(e) => setHeight(e.target.value)}
-        //  onKeyPress={e => { e.key === 'Enter' && login() }}
         />
       </Form.Field>
       <Form.Field>
@@ -51,7 +50,6 @@ const Calculator = (props) => {
           defaultValue={width}
           value={width}
           onChange={(e) => setWidth(e.target.value)}
-        //  onKeyPress={e => { e.key === 'Enter' && login() }}
         />
       </Form.Field>
       <Form.Field>
@@ -128,11 +126,13 @@ const Calculator = (props) => {
         />
       </Form.Field>
       <Button
+        color='green'
       //  onSubmit={() => login()}
       >
         Calculate
     </Button>
       <Button
+        color='red'
         onClick={() => resetForm()}
       >
         Clear
