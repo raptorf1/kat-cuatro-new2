@@ -10,12 +10,14 @@ const Calculator = (props) => {
   const [width, setWidth] = useState(1)
   const [type, setType] = useState('')
   const [dimensions, setDimensions] = useState('')
+  const [driver, setDriver] = useState('')
+  const [axle, setAxle] = useState('')
 
   useEffect(() => { props.userIn === false && props.history.push('/') })
 
   return (
     <Form
-    //    style={{ 'maxWidth': 'fit-content', 'textAlignLast': 'center', 'paddingTop': '1rem', 'paddingLeft': '5rem' }}
+      style={{ 'maxWidth': 'fit-content', 'textAlignLast': 'center', 'paddingTop': '1rem', 'paddingLeft': '5rem' }}
     >
       <Form.Field>
         <label>Ύψος σε μέτρα</label>
@@ -47,7 +49,7 @@ const Calculator = (props) => {
       <Form.Field>
         <Radio
           label='Ίσιο'
-          name='radioGroup'
+          name='radioGroupType'
           value='isio'
           checked={type === 'isio'}
           onChange={() => { setType('isio'); setDimensions('') }}
@@ -56,7 +58,7 @@ const Calculator = (props) => {
       <Form.Field>
         <Radio
           label='Πομπέ'
-          name='radioGroup'
+          name='radioGroupType'
           value='pompe'
           checked={type === 'pompe'}
           onChange={() => { setType('pompe'); setDimensions('') }}
@@ -72,6 +74,48 @@ const Calculator = (props) => {
       />
       <br></br>
       <br></br>
+      <Form.Field>
+        <b>Υπάρχει οδηγός;</b>
+      </Form.Field>
+      <Form.Field>
+        <Radio
+          label='Ναι'
+          name='radioGroupDriver'
+          value={true}
+          checked={driver === true}
+          onChange={() => setDriver(true)}
+        />
+      </Form.Field>
+      <Form.Field>
+        <Radio
+          label='Όχι'
+          name='radioGroupDriver'
+          value={false}
+          checked={driver === false}
+          onChange={() => setDriver(false)}
+        />
+      </Form.Field>
+      <Form.Field>
+        <b>Υπάρχει άξωνας;</b>
+      </Form.Field>
+      <Form.Field>
+        <Radio
+          label='Ναι'
+          name='radioGroupAxle'
+          value={true}
+          checked={axle === true}
+          onChange={() => setAxle(true)}
+        />
+      </Form.Field>
+      <Form.Field>
+        <Radio
+          label='Όχι'
+          name='radioGroupAxle'
+          value={false}
+          checked={axle === false}
+          onChange={() => setAxle(false)}
+        />
+      </Form.Field>
       <Button
       //  onSubmit={() => login()}
       >
