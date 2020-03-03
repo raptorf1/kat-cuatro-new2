@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Form, Button, Message } from 'semantic-ui-react'
 
@@ -8,6 +8,8 @@ const Login = (props) => {
   const [password, setPassword] = useState('')
   const [errorDisplay, setErrorDisplay] = useState(false)
   const [errors, setErrors] = useState([])
+
+  useEffect(() => { (props.history.action === 'POP' && props.userIn === true) && props.history.push('/calculator') })
 
   const correctUsername = 'test'
   const correctPassword = 'test'

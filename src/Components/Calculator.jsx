@@ -4,11 +4,7 @@ import { connect } from 'react-redux'
 
 const Calculator = (props) => {
 
-  useEffect(() => {
-    if (props.userIn === false) {
-      props.history.push('/')
-    }
-  })
+  useEffect(() => { props.userIn === false && props.history.push('/') })
 
   return (
     'calculator yay'

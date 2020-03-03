@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react'
-import Navbar from './Navbar'
-import Login from './Login'
-import Calculator from './Calculator'
+import Navbar from './Components/Navbar'
+import Login from './Components/Login'
+import Calculator from './Components/Calculator'
 import { Sticky } from 'semantic-ui-react'
 import { Switch, Route } from 'react-router-dom'
 
