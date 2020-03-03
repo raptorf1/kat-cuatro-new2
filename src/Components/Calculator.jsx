@@ -15,6 +15,15 @@ const Calculator = (props) => {
 
   useEffect(() => { props.userIn === false && props.history.push('/') })
 
+  const resetForm = () => {
+    setHeight(1)
+    setWidth(1)
+    setType('')
+    setDimensions('')
+    setDriver('')
+    setAxle('')
+  }
+
   return (
     <Form
       style={{ 'maxWidth': 'fit-content', 'textAlignLast': 'center', 'paddingTop': '1rem', 'paddingLeft': '5rem' }}
@@ -26,7 +35,8 @@ const Calculator = (props) => {
           min={1}
           max={3}
           step={0.01}
-          defaultValue={1}
+          defaultValue={height}
+          value={height}
           onChange={(e) => setHeight(e.target.value)}
         //  onKeyPress={e => { e.key === 'Enter' && login() }}
         />
@@ -38,7 +48,8 @@ const Calculator = (props) => {
           min={1}
           max={2.4}
           step={0.01}
-          defaultValue={1}
+          defaultValue={width}
+          value={width}
           onChange={(e) => setWidth(e.target.value)}
         //  onKeyPress={e => { e.key === 'Enter' && login() }}
         />
@@ -120,6 +131,11 @@ const Calculator = (props) => {
       //  onSubmit={() => login()}
       >
         Calculate
+    </Button>
+      <Button
+        onClick={() => resetForm()}
+      >
+        Clear
     </Button>
     </Form>
   )
