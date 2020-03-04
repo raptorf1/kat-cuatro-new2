@@ -34,9 +34,9 @@ const Calculator = (props) => {
   }
 
   const calculateCost = () => {
-    if (height < 1 || width < 1 || type === '' || dimensions === '' || driver === '' || axle === '') {
+    if (height < 1 || height > 3 || width < 1 || width > 3 || type === '' || dimensions === '' || driver === '' || axle === '') {
       setErrorDisplay(true)
-      setErrors(['You have to fill in all form fields! Remember that minimum height and width is 1.'])
+      setErrors(['You have to fill in all form fields! Remember that minimum height and width is 1m, maximum height and width is 3m!'])
     } else {
       setErrorDisplay(false)
       setErrors([])
