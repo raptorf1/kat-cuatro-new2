@@ -40,8 +40,8 @@ const Calculator = (props) => {
     } else {
       setErrorDisplay(false)
       setErrors([])
-      setTotalCostPopupOpen(true)
       setCost(priceCalculation(height, width, type, dimensions, driver, axle))
+      setTotalCostPopupOpen(true)
     }
   }
 
@@ -169,15 +169,12 @@ const Calculator = (props) => {
         modal
         open={totalCostPopupOpen}
         closeOnDocumentClick={true}
-        //        onClose={() => { this.setState({ imageUploadPopupOpen: false, uploadedImage: '', imageUploadButton: true }) }}
+        onClose={() => { setTotalCostPopupOpen(false); setCost('') }}
         position='top center'
       >
         <div>
           <TotalCostPopup
-          //          onImageDropHandler={this.onImageDropHandler.bind(this)}
-          //          imageUploadButton={this.state.imageUploadButton}
-          //          handleSendEvent={this.handleSendEvent.bind(this)}
-          //          uploadedImage={this.state.uploadedImage}
+            cost={cost}
           />
         </div>
       </Popup>
