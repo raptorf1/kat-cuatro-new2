@@ -3,6 +3,7 @@ import { Form, Button, Radio, Dropdown } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { ISIO_OPTIONS } from '../Modules/isioOptions'
 import { POMPE_OPTIONS } from '../Modules/pompeOptions'
+import { priceCalculation } from '../Modules/priceCalculation'
 
 const Calculator = (props) => {
 
