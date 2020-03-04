@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Button, Radio, Dropdown, Message } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import Popup from 'reactjs-popup'
+import TotalCostPopup from './TotalCostPopup'
 import { ISIO_OPTIONS } from '../Modules/isioOptions'
 import { POMPE_OPTIONS } from '../Modules/pompeOptions'
 import { priceCalculation } from '../Modules/priceCalculation'
@@ -16,6 +18,7 @@ const Calculator = (props) => {
   const [cost, setCost] = useState('')
   const [errorDisplay, setErrorDisplay] = useState(false)
   const [errors, setErrors] = useState([])
+  const [totalCostPopupOpen, setTotalCostPopupOpen] = useState(false)
 
   useEffect(() => { props.userIn === false && props.history.push('/') })
 
@@ -37,6 +40,7 @@ const Calculator = (props) => {
     } else {
       setErrorDisplay(false)
       setErrors([])
+      setTotalCostPopupOpen(true)
       setCost(priceCalculation(height, width, type, dimensions, driver, axle))
     }
   }
@@ -161,6 +165,22 @@ const Calculator = (props) => {
           {errors}
         </Message>
       }
+      <Popup
+        modal
+        open={totalCostPopupOpen}
+        closeOnDocumentClick={true}
+        //        onClose={() => { this.setState({ imageUploadPopupOpen: false, uploadedImage: '', imageUploadButton: true }) }}
+        position='top center'
+      >
+        <div>
+          <TotalCostPopup
+          //          onImageDropHandler={this.onImageDropHandler.bind(this)}
+          //          imageUploadButton={this.state.imageUploadButton}
+          //          handleSendEvent={this.handleSendEvent.bind(this)}
+          //          uploadedImage={this.state.uploadedImage}
+          />
+        </div>
+      </Popup>
     </>
   )
 }
