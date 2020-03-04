@@ -67,7 +67,7 @@ const Calculator = (props) => {
           <input
             type='number'
             min={1}
-            max={2.4}
+            max={3}
             step={0.01}
             defaultValue={width}
             value={width}

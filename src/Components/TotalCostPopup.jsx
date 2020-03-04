@@ -3,7 +3,10 @@ import React from 'react'
 const TotalCostPopupOpen = (props) => {
 
   return (
-    'yay'
+    <p>
+      Συνολικό κόστος: ${props.cost} €
+      Προτεινόμενη τιμή πώλησης: ${(props.cost * 1.15).toFixed(2)} €
+    </p>
   )
 }
 
