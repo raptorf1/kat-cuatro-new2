@@ -2,9 +2,13 @@ const priceCalculation = (height, width, type, dimensions, driver, axle) => {
   let minCost = 18.76
   let tapes_parathiro = 0.90
   let tapes_mpalkonoporta = 0.90
-  let kouti, plaina, odhg, akson, totalCost
+  let kouti = 0
+  let plaina = 0
+  let odhg = 0
+  let akson = 0
+  let totalCost
 
-  if (type === 'isia' && dimensions === '14x17') {
+  if (type === 'isio' && dimensions === '14x17') {
     kouti = 13.06
     plaina = 4.30
     if (driver === true) {
@@ -14,7 +18,7 @@ const priceCalculation = (height, width, type, dimensions, driver, axle) => {
       akson = 2.50
     }
   }
-  if (type === 'isia' && dimensions === '14x19') {
+  if (type === 'isio' && dimensions === '14x19') {
     kouti = 11.10
     plaina = 4.16
     if (driver === true) {
@@ -24,7 +28,7 @@ const priceCalculation = (height, width, type, dimensions, driver, axle) => {
       akson = 2.50
     }
   }
-  if (type === 'isia' && dimensions === '17x17') {
+  if (type === 'isio' && dimensions === '17x17') {
     kouti = 14.70
     plaina = 5.17
     if (driver === true) {
@@ -34,7 +38,7 @@ const priceCalculation = (height, width, type, dimensions, driver, axle) => {
       akson = 2.50
     }
   }
-  if (type === 'isia' && dimensions === '18x19') {
+  if (type === 'isio' && dimensions === '18x19') {
     kouti = 14.70
     plaina = 5.17
     if (driver === true) {
@@ -44,7 +48,7 @@ const priceCalculation = (height, width, type, dimensions, driver, axle) => {
       akson = 2.50
     }
   }
-  if (type === 'isia' && dimensions === '20x20') {
+  if (type === 'isio' && dimensions === '20.6x20.6') {
     kouti = 18.88
     plaina = 7.30
     if (driver === true) {
@@ -64,7 +68,7 @@ const priceCalculation = (height, width, type, dimensions, driver, axle) => {
       akson = 1.30
     }
   }
-  if (type === 'pompe' && dimensions === '15x18') {
+  if (type === 'pompe' && dimensions === '15.5x18.5') {
     kouti = 14.60
     plaina = 4.80
     if (driver === true) {
@@ -84,7 +88,7 @@ const priceCalculation = (height, width, type, dimensions, driver, axle) => {
       akson = 1.30
     }
   }
-  if (type === 'pompe' && dimensions === '20x20') {
+  if (type === 'pompe' && dimensions === '20.6x20.6') {
     kouti = 19.07
     plaina = 7.80
     if (driver === true) {

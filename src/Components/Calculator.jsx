@@ -13,6 +13,7 @@ const Calculator = (props) => {
   const [dimensions, setDimensions] = useState('')
   const [driver, setDriver] = useState('')
   const [axle, setAxle] = useState('')
+  const [cost, setCost] = useState('')
 
   useEffect(() => { props.userIn === false && props.history.push('/') })
 
@@ -23,6 +24,10 @@ const Calculator = (props) => {
     setDimensions('')
     setDriver('')
     setAxle('')
+  }
+
+  const calculateCost = () => {
+    setCost(priceCalculation(height, width, type, dimensions, driver, axle))
   }
 
   return (
@@ -128,7 +133,7 @@ const Calculator = (props) => {
       </Form.Field>
       <Button
         color='green'
-      //  onSubmit={() => login()}
+        onClick={() => calculateCost()}
       >
         Calculate
     </Button>
