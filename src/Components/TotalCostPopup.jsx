@@ -37,7 +37,7 @@ const TotalCostPopupOpen = (props) => {
       <br></br>
       <br></br>
       <Input
-        label={{ tag: true, content: customerPriceAfterDiscount }}
+        label={{ color: customerPriceAfterDiscount > props.cost ? 'green' : 'red', tag: true, content: `${customerPriceAfterDiscount} €` }}
         labelPosition='right'
         placeholder='Έκπτωση %'
         onChange={(e) => setDiscount(e.target.value)}
