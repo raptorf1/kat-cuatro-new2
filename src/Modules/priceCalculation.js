@@ -1,7 +1,7 @@
 const priceCalculation = (height, width, type, dimensions, driver, axle) => {
   let minCost = 18.76
   let tapes_parathiro = 0.90
-  let tapes_mpalkonoporta = 0.90
+//  let tapes_mpalkonoporta = 0.90
   let kouti = 0
   let plaina = 0
   let odhg = 0
