@@ -15,7 +15,6 @@ class App extends Component {
       <div ref={this.contextRef}>
         <Sticky
           context={this.contextRef}
-          style={{ 'backgroundColor': 'black' }}
         >
           <Navbar />
         </Sticky>

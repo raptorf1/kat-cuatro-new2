@@ -8,7 +8,7 @@ const Navbar = (props) => {
   return (
     <List
       horizontal
-      style={{ 'paddingLeft': '2rem' }}
+      style={{ 'paddingLeft': '2rem', 'backgroundColor': 'black', 'display': 'block' }}
     >
       <List.Item
         as={Link}
