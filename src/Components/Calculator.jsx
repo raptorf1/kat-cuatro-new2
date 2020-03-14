@@ -10,7 +10,7 @@ import { THERMO_POMPE_OPTIONS } from '../Modules/thermoPompeOptions'
 import { EKSOTERIKO_OPTIONS } from '../Modules/eksoterikoOptions'
 import { FILLARAKI_ALOUMINIOU_OPTIONS } from '../Modules/fillarAloumOptions'
 import { FILLARAKI_POLIORETHANIS_OPTIONS } from '../Modules/fillarPolOptions'
-import { priceCalculation } from '../Modules/priceCalculation'
+// import { priceCalculation } from '../Modules/priceCalculation'
 
 const Calculator = (props) => {
 
@@ -18,10 +18,10 @@ const Calculator = (props) => {
   const [width, setWidth] = useState(1)
   const [fillaraki, setFillaraki] = useState('')
   const [fillarakiOptions, setFillarakiOptions] = useState('')
-  const [type, setType] = useState('')
-  const [dimensions, setDimensions] = useState('')
+  const [kouti, setKouti] = useState('')
+  const [koutiOptions, setKoutiOptions] = useState('')
   const [driver, setDriver] = useState('')
-  const [axle, setAxle] = useState('')
+  const [kinisi, setKinisi] = useState('')
   const [cost, setCost] = useState('')
   const [errorDisplay, setErrorDisplay] = useState(false)
   const [errors, setErrors] = useState([])
@@ -34,22 +34,22 @@ const Calculator = (props) => {
     setWidth(1)
     setFillaraki('')
     setFillarakiOptions('')
-    setType('')
-    setDimensions('')
+    setKouti('')
+    setKoutiOptions('')
     setDriver('')
-    setAxle('')
+    setKinisi('')
     setErrorDisplay(false)
     setErrors([])
   }
 
   const calculateCost = () => {
-    if (height < 1 || height > 6 || width < 1 || width > 6 || type === '' || dimensions === '' || driver === '' || axle === '') {
+    if (height < 1 || height > 6 || width < 1 || width > 6 || fillaraki === '' || fillarakiOptions === '' || kouti === '' || koutiOptions === '' || kinisi === '' || driver === '') {
       setErrorDisplay(true)
       setErrors(['Παρακαλώ συμπληρώστε όλη τη φόρμα! Το ελάχιστο ύψος και πλάτος είναι 1μ, το μέγιστο ύψος και πλάτος είναι 6μ!'])
     } else {
       setErrorDisplay(false)
       setErrors([])
-      setCost(priceCalculation(height, width, type, dimensions, driver, axle))
+      //  setCost(priceCalculation(height, width, type, dimensions, driver, axle))
       setTotalCostPopupOpen(true)
     }
   }
@@ -71,6 +71,8 @@ const Calculator = (props) => {
             onChange={(e) => setHeight(e.target.value)}
           />
         </Form.Field>
+        <br />
+        <br />
 
         <Form.Field>
           <label>Πλάτος σε μέτρα</label>
@@ -84,6 +86,8 @@ const Calculator = (props) => {
             onChange={(e) => setWidth(e.target.value)}
           />
         </Form.Field>
+        <br />
+        <br />
 
         <Form.Field>
           <b>Τύπος Φυλλαράκι</b>
@@ -114,8 +118,10 @@ const Calculator = (props) => {
           options={fillaraki === 'poliorethanis' ? FILLARAKI_POLIORETHANIS_OPTIONS : fillaraki === 'alouminiou' ? FILLARAKI_ALOUMINIOU_OPTIONS : []}
           onChange={(e, { value }) => { setFillarakiOptions(value) }}
         />
-        <br></br>
-        <br></br>
+        <br />
+        <br />
+        <br />
+        <br />
 
         <Form.Field>
           <b>Τύπος Κουτιού</b>
@@ -125,8 +131,8 @@ const Calculator = (props) => {
             label='Ίσιο'
             name='radioGroupType'
             value='isio'
-            checked={type === 'isio'}
-            onChange={() => { setType('isio'); setDimensions('') }}
+            checked={kouti === 'isio'}
+            onChange={() => { setKouti('isio'); setKoutiOptions('') }}
           />
         </Form.Field>
         <Form.Field>
@@ -134,8 +140,8 @@ const Calculator = (props) => {
             label='Πομπέ'
             name='radioGroupType'
             value='pompe'
-            checked={type === 'pompe'}
-            onChange={() => { setType('pompe'); setDimensions('') }}
+            checked={kouti === 'pompe'}
+            onChange={() => { setKouti('pompe'); setKoutiOptions('') }}
           />
         </Form.Field>
         <Form.Field>
@@ -143,8 +149,8 @@ const Calculator = (props) => {
             label='Θερμό Ίσιο'
             name='radioGroupType'
             value='thermoIsio'
-            checked={type === 'thermoIsio'}
-            onChange={() => { setType('thermoIsio'); setDimensions('') }}
+            checked={kouti === 'thermoIsio'}
+            onChange={() => { setKouti('thermoIsio'); setKoutiOptions('') }}
           />
         </Form.Field>
         <Form.Field>
@@ -152,8 +158,8 @@ const Calculator = (props) => {
             label='Θερμό Πομπέ'
             name='radioGroupType'
             value='thermoPompe'
-            checked={type === 'thermoPompe'}
-            onChange={() => { setType('thermoPompe'); setDimensions('') }}
+            checked={kouti === 'thermoPompe'}
+            onChange={() => { setKouti('thermoPompe'); setKoutiOptions('') }}
           />
         </Form.Field>
         <Form.Field>
@@ -161,20 +167,73 @@ const Calculator = (props) => {
             label='Εξωτερικό'
             name='radioGroupType'
             value='eksoteriko'
-            checked={type === 'eksoteriko'}
-            onChange={() => { setType('eksoteriko'); setDimensions('') }}
+            checked={kouti === 'eksoteriko'}
+            onChange={() => { setKouti('eksoteriko'); setKoutiOptions('') }}
           />
         </Form.Field>
         <Dropdown
           selection
           placeholder='Επιλογές'
-          value={dimensions}
-          disabled={type === '' && true}
-          options={type === 'isio' ? ISIO_OPTIONS : type === 'pompe' ? POMPE_OPTIONS : type === 'thermoIsio' ? THERMO_ISIO_OPTIONS : type === 'thermoPompe' ? THERMO_POMPE_OPTIONS : type === 'eksoteriko' ? EKSOTERIKO_OPTIONS : []}
-          onChange={(e, { value }) => { setDimensions(value) }}
+          value={koutiOptions}
+          disabled={kouti === '' && true}
+          options={kouti === 'isio' ? ISIO_OPTIONS : kouti === 'pompe' ? POMPE_OPTIONS : kouti === 'thermoIsio' ? THERMO_ISIO_OPTIONS : kouti === 'thermoPompe' ? THERMO_POMPE_OPTIONS : kouti === 'eksoteriko' ? EKSOTERIKO_OPTIONS : []}
+          onChange={(e, { value }) => { setKoutiOptions(value) }}
         />
-        <br></br>
-        <br></br>
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <Form.Field>
+          <b>Τύπος Κίνησης</b>
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Με ιμάντα'
+            name='radioGroupKinisi'
+            value='imanta'
+            checked={kinisi === 'imanta'}
+            onChange={() => setKinisi('imanta')}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Με μοτέρ'
+            name='radioGroupKinisi'
+            value='moter'
+            checked={kinisi === 'moter'}
+            onChange={() => setKinisi('moter')}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Με μανιβέλα'
+            name='radioGroupKinisi'
+            value='manivela'
+            checked={kinisi === 'manivela'}
+            onChange={() => setKinisi('manivela')}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Με μοτέρ μανιβέλας'
+            name='radioGroupKinisi'
+            value='moterManivela'
+            checked={kinisi === 'moterManivela'}
+            onChange={() => setKinisi('moterManivela')}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Δίχως'
+            name='radioGroupKinisi'
+            value='dixos'
+            checked={kinisi === 'dixos'}
+            onChange={() => setKinisi('dixos')}
+          />
+        </Form.Field>
+        <br />
+        <br />
 
         <Form.Field>
           <b>Υπάρχει οδηγός;</b>
@@ -197,27 +256,8 @@ const Calculator = (props) => {
             onChange={() => setDriver(false)}
           />
         </Form.Field>
-        <Form.Field>
-          <b>Υπάρχει άξωνας;</b>
-        </Form.Field>
-        <Form.Field>
-          <Radio
-            label='Ναι'
-            name='radioGroupAxle'
-            value={true}
-            checked={axle === true}
-            onChange={() => setAxle(true)}
-          />
-        </Form.Field>
-        <Form.Field>
-          <Radio
-            label='Όχι'
-            name='radioGroupAxle'
-            value={false}
-            checked={axle === false}
-            onChange={() => setAxle(false)}
-          />
-        </Form.Field>
+
+
         <Button
           color='green'
           onClick={() => calculateCost()}

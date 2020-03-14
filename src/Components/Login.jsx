@@ -48,7 +48,7 @@ const Login = (props) => {
         </Form.Field>
         <Button
           color='violet'
-          onSubmit={() => login()}
+          onClick={() => login()}
         >
           Login
         </Button>
