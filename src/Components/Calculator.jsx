@@ -274,6 +274,12 @@ const Calculator = (props) => {
         </Form.Field>
         <br />
 
+        {errorDisplay &&
+          <Message negative >
+            {errors}
+          </Message>
+        }
+
         <Button
           color='green'
           onClick={() => calculateCost()}
@@ -287,12 +293,6 @@ const Calculator = (props) => {
           Clear
         </Button>
       </Form>
-
-      {errorDisplay &&
-        <Message negative style={{ 'textAlign': 'center' }} >
-          {errors}
-        </Message>
-      }
 
       <Popup
         modal
