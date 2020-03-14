@@ -20,8 +20,8 @@ const Calculator = (props) => {
   const [fillarakiOptions, setFillarakiOptions] = useState('')
   const [kouti, setKouti] = useState('')
   const [koutiOptions, setKoutiOptions] = useState('')
-  const [driver, setDriver] = useState('')
   const [kinisi, setKinisi] = useState('')
+  const [driver, setDriver] = useState('')
   const [cost, setCost] = useState('')
   const [errorDisplay, setErrorDisplay] = useState(false)
   const [errors, setErrors] = useState([])
@@ -36,8 +36,8 @@ const Calculator = (props) => {
     setFillarakiOptions('')
     setKouti('')
     setKoutiOptions('')
-    setDriver('')
     setKinisi('')
+    setDriver('')
     setErrorDisplay(false)
     setErrors([])
   }
@@ -121,7 +121,6 @@ const Calculator = (props) => {
         <br />
         <br />
         <br />
-        <br />
 
         <Form.Field>
           <b>Τύπος Κουτιού</b>
@@ -182,7 +181,6 @@ const Calculator = (props) => {
         <br />
         <br />
         <br />
-        <br />
 
         <Form.Field>
           <b>Τύπος Κίνησης</b>
@@ -236,27 +234,45 @@ const Calculator = (props) => {
         <br />
 
         <Form.Field>
-          <b>Υπάρχει οδηγός;</b>
+          <b>Τύπος οδηγού</b>
         </Form.Field>
         <Form.Field>
           <Radio
-            label='Ναι'
+            label='Φτερό 6+2'
             name='radioGroupDriver'
-            value={true}
-            checked={driver === true}
-            onChange={() => setDriver(true)}
+            value='ftero 6+2'
+            checked={driver === 'ftero 6+2'}
+            onChange={() => setDriver('ftero 6+2')}
           />
         </Form.Field>
         <Form.Field>
           <Radio
-            label='Όχι'
+            label='Φτερό 10+2'
             name='radioGroupDriver'
-            value={false}
-            checked={driver === false}
-            onChange={() => setDriver(false)}
+            value='ftero 10+2'
+            checked={driver === 'ftero 10+2'}
+            onChange={() => setDriver('ftero 10+2')}
           />
         </Form.Field>
-
+        <Form.Field>
+          <Radio
+            label='Φτερό 12+'
+            name='radioGroupDriver'
+            value='ftero 12+'
+            checked={driver === 'ftero 12+'}
+            onChange={() => setDriver('ftero 12+')}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Δίχως'
+            name='radioGroupDriver'
+            value='dixos'
+            checked={driver === 'dixos'}
+            onChange={() => setDriver('dixos')}
+          />
+        </Form.Field>
+        <br />
 
         <Button
           color='green'
@@ -271,11 +287,13 @@ const Calculator = (props) => {
           Clear
         </Button>
       </Form>
+
       {errorDisplay &&
         <Message negative style={{ 'textAlign': 'center' }} >
           {errors}
         </Message>
       }
+
       <Popup
         modal
         open={totalCostPopupOpen}
