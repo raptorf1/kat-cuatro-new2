@@ -5,6 +5,9 @@ import Popup from 'reactjs-popup'
 import TotalCostPopup from './TotalCostPopup'
 import { ISIO_OPTIONS } from '../Modules/isioOptions'
 import { POMPE_OPTIONS } from '../Modules/pompeOptions'
+import { THERMO_ISIO_OPTIONS } from '../Modules/thermoIsioOptions'
+import { THERMO_POMPE_OPTIONS } from '../Modules/thermoPompeOptions'
+import { EKSOTERIKO_OPTIONS } from '../Modules/eksoterikoOptions'
 import { FILLARAKI_ALOUMINIOU_OPTIONS } from '../Modules/fillarAloumOptions'
 import { FILLARAKI_POLIORETHANIS_OPTIONS } from '../Modules/fillarPolOptions'
 import { priceCalculation } from '../Modules/priceCalculation'
@@ -115,7 +118,7 @@ const Calculator = (props) => {
         <br></br>
 
         <Form.Field>
-          <b>Τύπος Κουφώματος</b>
+          <b>Τύπος Κουτιού</b>
         </Form.Field>
         <Form.Field>
           <Radio
@@ -135,16 +138,44 @@ const Calculator = (props) => {
             onChange={() => { setType('pompe'); setDimensions('') }}
           />
         </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Θερμό Ίσιο'
+            name='radioGroupType'
+            value='thermoIsio'
+            checked={type === 'thermoIsio'}
+            onChange={() => { setType('thermoIsio'); setDimensions('') }}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Θερμό Πομπέ'
+            name='radioGroupType'
+            value='thermoPompe'
+            checked={type === 'thermoPompe'}
+            onChange={() => { setType('thermoPompe'); setDimensions('') }}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Εξωτερικό'
+            name='radioGroupType'
+            value='eksoteriko'
+            checked={type === 'eksoteriko'}
+            onChange={() => { setType('eksoteriko'); setDimensions('') }}
+          />
+        </Form.Field>
         <Dropdown
           selection
           placeholder='Επιλογές'
           value={dimensions}
           disabled={type === '' && true}
-          options={type === 'isio' ? ISIO_OPTIONS : type === 'pompe' ? POMPE_OPTIONS : []}
+          options={type === 'isio' ? ISIO_OPTIONS : type === 'pompe' ? POMPE_OPTIONS : type === 'thermoIsio' ? THERMO_ISIO_OPTIONS : type === 'thermoPompe' ? THERMO_POMPE_OPTIONS : type === 'eksoteriko' ? EKSOTERIKO_OPTIONS : []}
           onChange={(e, { value }) => { setDimensions(value) }}
         />
         <br></br>
         <br></br>
+
         <Form.Field>
           <b>Υπάρχει οδηγός;</b>
         </Form.Field>
