@@ -5,12 +5,16 @@ import Popup from 'reactjs-popup'
 import TotalCostPopup from './TotalCostPopup'
 import { ISIO_OPTIONS } from '../Modules/isioOptions'
 import { POMPE_OPTIONS } from '../Modules/pompeOptions'
+import { FILLARAKI_ALOUMINIOU_OPTIONS } from '../Modules/fillarAloumOptions'
+import { FILLARAKI_POLIORETHANIS_OPTIONS } from '../Modules/fillarPolOptions'
 import { priceCalculation } from '../Modules/priceCalculation'
 
 const Calculator = (props) => {
 
   const [height, setHeight] = useState(1)
   const [width, setWidth] = useState(1)
+  const [fillaraki, setFillaraki] = useState('')
+  const [fillarakiOptions, setFillarakiOptions] = useState('')
   const [type, setType] = useState('')
   const [dimensions, setDimensions] = useState('')
   const [driver, setDriver] = useState('')
@@ -25,6 +29,8 @@ const Calculator = (props) => {
   const resetForm = () => {
     setHeight(1)
     setWidth(1)
+    setFillaraki('')
+    setFillarakiOptions('')
     setType('')
     setDimensions('')
     setDriver('')
@@ -34,9 +40,9 @@ const Calculator = (props) => {
   }
 
   const calculateCost = () => {
-    if (height < 1 || height > 3 || width < 1 || width > 3 || type === '' || dimensions === '' || driver === '' || axle === '') {
+    if (height < 1 || height > 6 || width < 1 || width > 6 || type === '' || dimensions === '' || driver === '' || axle === '') {
       setErrorDisplay(true)
-      setErrors(['Παρακαλώ συμπληρώστε όλη τη φόρμα! Το ελάχιστο ύψος και πλάτος είναι 1μ, το μέγιστο ύψος και πλάτος είναι 3μ!'])
+      setErrors(['Παρακαλώ συμπληρώστε όλη τη φόρμα! Το ελάχιστο ύψος και πλάτος είναι 1μ, το μέγιστο ύψος και πλάτος είναι 6μ!'])
     } else {
       setErrorDisplay(false)
       setErrors([])
@@ -55,25 +61,59 @@ const Calculator = (props) => {
           <input
             type='number'
             min={1}
-            max={3}
+            max={6}
             step={0.01}
             defaultValue={height}
             value={height}
             onChange={(e) => setHeight(e.target.value)}
           />
         </Form.Field>
+
         <Form.Field>
           <label>Πλάτος σε μέτρα</label>
           <input
             type='number'
             min={1}
-            max={3}
+            max={6}
             step={0.01}
             defaultValue={width}
             value={width}
             onChange={(e) => setWidth(e.target.value)}
           />
         </Form.Field>
+
+        <Form.Field>
+          <b>Τύπος Φυλλαράκι</b>
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Πολυουρεθάνης'
+            name='radioGroupFillaraki'
+            value='poliorethanis'
+            checked={fillaraki === 'poliorethanis'}
+            onChange={() => { setFillaraki('poliorethanis'); setFillarakiOptions('') }}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Αλουμινίου'
+            name='radioGroupFillaraki'
+            value='alouminiou'
+            checked={fillaraki === 'alouminiou'}
+            onChange={() => { setFillaraki('alouminiou'); setFillarakiOptions('') }}
+          />
+        </Form.Field>
+        <Dropdown
+          selection
+          placeholder='Επιλογές'
+          value={fillarakiOptions}
+          disabled={fillaraki === '' && true}
+          options={fillaraki === 'poliorethanis' ? FILLARAKI_POLIORETHANIS_OPTIONS : fillaraki === 'alouminiou' ? FILLARAKI_ALOUMINIOU_OPTIONS : []}
+          onChange={(e, { value }) => { setFillarakiOptions(value) }}
+        />
+        <br></br>
+        <br></br>
+
         <Form.Field>
           <b>Τύπος Κουφώματος</b>
         </Form.Field>
@@ -97,7 +137,7 @@ const Calculator = (props) => {
         </Form.Field>
         <Dropdown
           selection
-          placeholder='Διαστάσεις'
+          placeholder='Επιλογές'
           value={dimensions}
           disabled={type === '' && true}
           options={type === 'isio' ? ISIO_OPTIONS : type === 'pompe' ? POMPE_OPTIONS : []}
