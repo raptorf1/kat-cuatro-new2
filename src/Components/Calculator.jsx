@@ -24,6 +24,7 @@ const Calculator = (props) => {
   const [driver, setDriver] = useState('')
   const [remote, setRemote] = useState('')
   const [color, setColor] = useState('')
+  const [quantity, setQuantity] = useState(1)
   const [cost, setCost] = useState('')
   const [errorDisplay, setErrorDisplay] = useState(false)
   const [errors, setErrors] = useState([])
@@ -42,12 +43,13 @@ const Calculator = (props) => {
     setDriver('')
     setRemote('')
     setColor('')
+    setQuantity(1)
     setErrorDisplay(false)
     setErrors([])
   }
 
   const calculateCost = () => {
-    if (height < 1 || height > 6 || width < 1 || width > 6 || fillaraki === '' || fillarakiOptions === '' || kouti === '' || koutiOptions === '' || kinisi === '' || driver === '' || remote === '' || color === '') {
+    if (height < 1 || height > 6 || width < 1 || width > 6 || fillaraki === '' || fillarakiOptions === '' || kouti === '' || koutiOptions === '' || kinisi === '' || driver === '' || remote === '' || color === '' || quantity < 1) {
       setErrorDisplay(true)
       setErrors(['Παρακαλώ συμπληρώστε όλη τη φόρμα! Το ελάχιστο ύψος και πλάτος είναι 1μ, το μέγιστο ύψος και πλάτος είναι 6μ!'])
     } else {
@@ -349,6 +351,18 @@ const Calculator = (props) => {
           />
         </Form.Field>
         <br />
+
+        <Form.Field>
+          <label>Ποσότητα κουφωμάτων</label>
+          <input
+            type='number'
+            min={1}
+            step={1}
+            defaultValue={quantity}
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+          />
+        </Form.Field>
 
         {errorDisplay &&
           <Message negative >
