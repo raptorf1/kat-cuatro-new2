@@ -13,9 +13,7 @@ class App extends Component {
 
     return (
       <div ref={this.contextRef}>
-        <Sticky
-          context={this.contextRef}
-        >
+        <Sticky context={this.contextRef}>
           <Navbar />
         </Sticky>
         <Switch>

@@ -14,14 +14,16 @@ import { FILLARAKI_POLIORETHANIS_OPTIONS } from '../Modules/fillarPolOptions'
 
 const Calculator = (props) => {
 
-  const [height, setHeight] = useState(1)
   const [width, setWidth] = useState(1)
+  const [height, setHeight] = useState(1)
   const [fillaraki, setFillaraki] = useState('')
   const [fillarakiOptions, setFillarakiOptions] = useState('')
   const [kouti, setKouti] = useState('')
   const [koutiOptions, setKoutiOptions] = useState('')
   const [kinisi, setKinisi] = useState('')
   const [driver, setDriver] = useState('')
+  const [remote, setRemote] = useState('')
+  const [color, setColor] = useState('')
   const [cost, setCost] = useState('')
   const [errorDisplay, setErrorDisplay] = useState(false)
   const [errors, setErrors] = useState([])
@@ -38,12 +40,14 @@ const Calculator = (props) => {
     setKoutiOptions('')
     setKinisi('')
     setDriver('')
+    setRemote('')
+    setColor('')
     setErrorDisplay(false)
     setErrors([])
   }
 
   const calculateCost = () => {
-    if (height < 1 || height > 6 || width < 1 || width > 6 || fillaraki === '' || fillarakiOptions === '' || kouti === '' || koutiOptions === '' || kinisi === '' || driver === '') {
+    if (height < 1 || height > 6 || width < 1 || width > 6 || fillaraki === '' || fillarakiOptions === '' || kouti === '' || koutiOptions === '' || kinisi === '' || driver === '' || remote === '' || color === '') {
       setErrorDisplay(true)
       setErrors(['Παρακαλώ συμπληρώστε όλη τη φόρμα! Το ελάχιστο ύψος και πλάτος είναι 1μ, το μέγιστο ύψος και πλάτος είναι 6μ!'])
     } else {
@@ -56,23 +60,7 @@ const Calculator = (props) => {
 
   return (
     <>
-      <Form
-        style={{ 'maxWidth': 'fit-content', 'textAlignLast': 'center', 'paddingTop': '1rem', 'paddingLeft': '5rem' }}
-      >
-        <Form.Field>
-          <label>Ύψος σε μέτρα</label>
-          <input
-            type='number'
-            min={1}
-            max={6}
-            step={0.01}
-            defaultValue={height}
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
-          />
-        </Form.Field>
-        <br />
-        <br />
+      <Form style={{ 'maxWidth': 'fit-content', 'textAlignLast': 'center', 'paddingTop': '1rem', 'paddingLeft': '5rem' }}>
 
         <Form.Field>
           <label>Πλάτος σε μέτρα</label>
@@ -87,6 +75,19 @@ const Calculator = (props) => {
           />
         </Form.Field>
         <br />
+
+        <Form.Field>
+          <label>Ύψος σε μέτρα</label>
+          <input
+            type='number'
+            min={1}
+            max={6}
+            step={0.01}
+            defaultValue={height}
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
+          />
+        </Form.Field>
         <br />
 
         <Form.Field>
@@ -223,11 +224,11 @@ const Calculator = (props) => {
         </Form.Field>
         <Form.Field>
           <Radio
-            label='Δίχως'
+            label='Με ιμάντα μειωτήρα'
             name='radioGroupKinisi'
             value='dixos'
-            checked={kinisi === 'dixos'}
-            onChange={() => setKinisi('dixos')}
+            checked={kinisi === 'imantaMeiotira'}
+            onChange={() => setKinisi('imantaMeiotira')}
           />
         </Form.Field>
         <br />
@@ -270,6 +271,81 @@ const Calculator = (props) => {
             value='dixos'
             checked={driver === 'dixos'}
             onChange={() => setDriver('dixos')}
+          />
+        </Form.Field>
+        <br />
+        <br />
+
+        <Form.Field>
+          <b>Υπάρχει τηλεχειρισμός;</b>
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Ναι'
+            name='radioGroupRemote'
+            value={true}
+            checked={remote === true}
+            onChange={() => setRemote(true)}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Όχι'
+            name='radioGroupRemote'
+            value={false}
+            checked={remote === false}
+            onChange={() => setRemote(false)}
+          />
+        </Form.Field>
+        <br />
+        <br />
+
+        <Form.Field>
+          <b>Χρώμα</b>
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Λευκό'
+            name='radioGroupColor'
+            value='white'
+            checked={color === 'white'}
+            onChange={() => setColor('white')}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='RAL'
+            name='radioGroupColor'
+            value='ral'
+            checked={color === 'ral'}
+            onChange={() => setColor('ral')}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='MAT'
+            name='radioGroupColor'
+            value='mat'
+            checked={color === 'mat'}
+            onChange={() => setColor('mat')}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Sample'
+            name='radioGroupColor'
+            value='sample'
+            checked={color === 'sample'}
+            onChange={() => setColor('sample')}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Ξύλου'
+            name='radioGroupColor'
+            value='wood'
+            checked={color === 'wood'}
+            onChange={() => setColor('wood')}
           />
         </Form.Field>
         <br />
